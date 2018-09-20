@@ -8,8 +8,6 @@ class WeatherClient {
       response => {
         component.setState({
           weather: response.data
-        }, () => {
-          console.log(response.data)
         })
       }, ErrorService.handler)
   }
