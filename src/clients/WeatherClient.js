@@ -4,7 +4,7 @@ import ErrorService from '../service/ErrorService'
 class WeatherClient {
   static get(component, params) {
     new Server().get(
-      'http://api.openweathermap.org/data/2.5/weather',
+      'https://api.openweathermap.org/data/2.5/weather',
       params,
       response => {
         component.setState(
