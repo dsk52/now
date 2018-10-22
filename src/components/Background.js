@@ -1,7 +1,8 @@
 import React from 'react'
 import FlickerClient from '../clients/FlickerClient'
+import styled from 'styled-components'
 
-const API_KEY = '0a1530ccec439eaedcef56ded19479ba'
+const API_KEY = process.env.REACT_APP_FLICKER_KEY
 
 class Background extends React.Component {
   constructor(props) {
@@ -30,26 +31,68 @@ class Background extends React.Component {
     FlickerClient.get(this, params)
   }
 
+  // currentWeatherImg(photo) {
+  //   const imagePath = `https://farm${photo.farm}.staticflickr.com/${
+  //     photo.server
+  //   }/${photo.id}_${photo.secret}.jpg`
+
+  //   return (
+  //     <div>
+  //       <div style={{ backgroundImage: imagePath }}>aaa</div>
+  //     </div>
+  //   )
+  // }
+
   render() {
     return (
       <div>
-        {!this.state.photos.photo.length
-          ? null
-          : this.state.photos.photo.map(photo => {
-              return (
-                <div key={photo.id}>
-                  <img
-                    src={`https://farm${photo.farm}.staticflickr.com/${
-                      photo.server
-                    }/${photo.id}_${photo.secret}.jpg`}
-                    alt={photo.title}
-                  />
-                </div>
-              )
-            })}
+        {!this.state.photos.photo.length ? (
+          <DefaultBackgroundImage />
+        ) : (
+          this.state.photos.photo.map(photo => {
+            return (
+              <div key={photo.id}>
+                <CurrentBackgroundImage photo={photo} />
+              </div>
+            )
+          })
+        )}
       </div>
     )
   }
 }
 
 export default Background
+
+const DefaultBackgroundImage = () => {
+  const imagePath =
+    'https://farm2.staticflickr.com/1957/44769600924_35db82d4c4.jpg'
+  return (
+    <div
+      style={{
+        display: 'block',
+        width: '100%',
+        height: '100vh',
+        background: `url(${imagePath}) no-repeat center center / cover`
+      }}
+    />
+  )
+}
+
+const CurrentBackgroundImage = props => {
+  const photo = props.photo
+  const imagePath = `https://farm${photo.farm}.staticflickr.com/${
+    photo.server
+  }/${photo.id}_${photo.secret}.jpg`
+
+  return (
+    <div
+      style={{
+        display: 'block',
+        width: '100%',
+        height: '100vh',
+        background: `url(${imagePath}) no-repeat center center / cover`
+      }}
+    />
+  )
+}

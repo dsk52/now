@@ -93,17 +93,20 @@ class Watch extends React.Component {
 const DateContent = styled.div`
   line-height: 1;
   font-size: 24px;
+  color: #fff;
 
   .unit {
     margin-left: 0.3em;
     font-weight: bold;
     font-size: 0.6em;
+    color: #fff;
   }
 `
 
 const TimeContent = styled.div`
   line-height: 1;
   font-size: 74px;
+  color: #fff;
 `
 
 export default Watch
