@@ -19,7 +19,7 @@ class Weather extends React.Component {
           {
             main: '',
             description: '',
-            icon: '10n'
+            icon: ''
           }
         ]
       }
@@ -94,7 +94,9 @@ const WeatherDetail = styled.div`
   .area {
     margin-bottom: 0;
     line-height: 1;
+    color: #fff;
   }
+
   > div {
     display: inline-block;
     vertical-align: middle;
@@ -115,6 +117,7 @@ const WeatherIcon = styled.div`
 const Temp = styled.div`
   .current {
     font-size: 21px;
+    color: #fff;
   }
   .icon {
     display: inline-block;
@@ -126,11 +129,13 @@ const Temp = styled.div`
   }
   .detail {
     font-size: 0.8em;
+    color: #fff;
   }
 `
 
 const Humidity = styled.div`
   font-size: 21px;
+  color: #fff;
 
   .icon {
     display: inline-block;
