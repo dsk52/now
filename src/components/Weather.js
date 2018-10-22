@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import WeatherClient from '../clients/WeatherClient'
 
-const API_KEY = '26aec3d9c9d062a031cf030f313cf02b'
+const API_KEY = process.env.REACT_APP_OPEN_WEATHER_MAP_KEY
 
 class Weather extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Weather extends React.Component {
           {
             main: '',
             description: '',
-            icon: ''
+            icon: '10n'
           }
         ]
       }

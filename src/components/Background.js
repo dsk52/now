@@ -31,18 +31,6 @@ class Background extends React.Component {
     FlickerClient.get(this, params)
   }
 
-  // currentWeatherImg(photo) {
-  //   const imagePath = `https://farm${photo.farm}.staticflickr.com/${
-  //     photo.server
-  //   }/${photo.id}_${photo.secret}.jpg`
-
-  //   return (
-  //     <div>
-  //       <div style={{ backgroundImage: imagePath }}>aaa</div>
-  //     </div>
-  //   )
-  // }
-
   render() {
     return (
       <div>
