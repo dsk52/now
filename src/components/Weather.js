@@ -28,6 +28,14 @@ class Weather extends React.Component {
 
   componentDidMount() {
     this.fetchData()
+
+    this.fetchId = setInterval(() => {
+      this.fetchData()
+    }, 30000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.fetchId)
   }
 
   fetchData() {
@@ -46,7 +54,7 @@ class Weather extends React.Component {
           <h1 className="area">{this.state.weather.name}</h1>
           <WeatherIcon>
             <img
-              src={`http://openweathermap.org/img/w/${
+              src={`https://openweathermap.org/img/w/${
                 this.state.weather.weather[0].icon
               }.png`}
               alt={`${this.state.weather.weather[0].main}`}

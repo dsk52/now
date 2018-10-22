@@ -7,14 +7,9 @@ class WeatherClient {
       'https://api.openweathermap.org/data/2.5/weather',
       params,
       response => {
-        component.setState(
-          {
-            weather: response.data
-          },
-          () => {
-            console.log(response.data)
-          }
-        )
+        component.setState({
+          weather: response.data
+        })
       },
       ErrorService.handler
     )
