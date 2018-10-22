@@ -1,6 +1,6 @@
 import React from 'react'
 import FlickerClient from '../clients/FlickerClient'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 const API_KEY = process.env.REACT_APP_FLICKER_KEY
 
