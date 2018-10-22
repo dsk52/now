@@ -4,13 +4,29 @@ import styled from 'styled-components'
 class Drawer extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      isOpen: false
+    }
+  }
+
+  handleOpen() {
+    if (this.state.isOpen) {
+      this.setState({ isOpen: false })
+    } else {
+      this.setState({ isOpen: true })
+    }
   }
 
   render() {
     return (
-      <DrawerBackground>
-        <Handle>
-          <span class="text">&lt;</span>
+      <DrawerBackground className={this.state.isOpen ? 'isOpen' : ''}>
+        <Handle
+          onClick={event => {
+            this.handleOpen()
+          }}
+        >
+          <span className="text">&lt;</span>
         </Handle>
         <DrawerContent>aaa</DrawerContent>
       </DrawerBackground>
@@ -22,14 +38,19 @@ export default Drawer
 
 const DrawerBackground = styled.div`
   display: block;
-  width: 80%;
+  width: 0;
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   z-index: 3;
-  background-color: rgba(100, 100, 100, 0.6);
+  background-color: rgba(200, 200, 200, 0.6);
   /* overflow: hidden; */
+  transition: width 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+
+  &.isOpen {
+    width: 80%;
+  }
 `
 
 const DrawerContent = styled.div`
@@ -44,7 +65,7 @@ const DrawerContent = styled.div`
 
 const Handle = styled.div`
   display: table;
-  background-color: rgba(100, 100, 100, 0.6);
+  background-color: rgba(200, 200, 200, 0.6);
   width: 30px;
   height: 80px;
   border-radius: 5px 0 0 5px;
@@ -60,5 +81,6 @@ const Handle = styled.div`
     margin-top: -10px;
     margin-left: 20px;
     color: #fff;
+    cursor: pointer;
   }
 `
