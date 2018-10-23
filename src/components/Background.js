@@ -33,6 +33,7 @@ class Background extends React.Component {
       format: 'json',
       nojsoncallback: 1,
       text: 'sunny',
+      extras: 'url_l,date_taken',
       method: 'flickr.photos.search',
       per_page: 1
     }
@@ -76,18 +77,13 @@ const DefaultBackgroundImage = () => {
 }
 
 const CurrentBackgroundImage = props => {
-  const photo = props.photo
-  const imagePath = `https://farm${photo.farm}.staticflickr.com/${
-    photo.server
-  }/${photo.id}_${photo.secret}.jpg`
-
   return (
     <div
       style={{
         display: 'block',
         width: '100%',
         height: '100vh',
-        background: `url(${imagePath}) no-repeat center center / cover`
+        background: `url(${props.photo.url_l}) no-repeat center center / cover`
       }}
     />
   )
