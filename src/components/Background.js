@@ -1,6 +1,6 @@
 import React from 'react'
 import FlickerClient from '../clients/FlickerClient'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 
 const API_KEY = process.env.REACT_APP_FLICKER_KEY
 
@@ -77,13 +77,17 @@ const DefaultBackgroundImage = () => {
 }
 
 const CurrentBackgroundImage = props => {
+  const imagePath = props.photo.url_l
+  if (!imagePath) {
+    return null
+  }
   return (
     <div
       style={{
         display: 'block',
         width: '100%',
         height: '100vh',
-        background: `url(${props.photo.url_l}) no-repeat center center / cover`
+        background: `url(${imagePath}) no-repeat center center / cover`
       }}
     />
   )
