@@ -7,9 +7,14 @@ class FlickerClient {
       'https://api.flickr.com/services/rest',
       params,
       response => {
-        component.setState({
-          photos: response.data.photos
-        })
+        component.setState(
+          {
+            photos: response.data.photos
+          },
+          () => {
+            console.log(component.state.photos)
+          }
+        )
       },
       ErrorService.handler
     )
