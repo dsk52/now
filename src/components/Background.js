@@ -20,7 +20,7 @@ class Background extends React.Component {
 
     this.fetchId = setInterval(() => {
       this.fetchPhoto()
-    }, 30000)
+    }, 1800000) // 30m
   }
 
   componentWillUnmount() {
@@ -33,7 +33,7 @@ class Background extends React.Component {
       format: 'json',
       nojsoncallback: 1,
       text: 'sunny',
-      extras: 'url_l,date_taken',
+      extras: 'url_l, owner_name',
       method: 'flickr.photos.search',
       per_page: 1
     }
@@ -43,43 +43,29 @@ class Background extends React.Component {
   render() {
     return (
       <div>
-        {!this.state.photos.photo.length ? (
-          <DefaultBackgroundImage />
-        ) : (
-          this.state.photos.photo.map(photo => {
-            return (
-              <div key={photo.id}>
-                <CurrentBackgroundImage photo={photo} />
-              </div>
-            )
-          })
-        )}
+        {this.state.photos.photo.length
+          ? this.state.photos.photo.map(photo => {
+              return (
+                <div key={photo.id}>
+                  <CurrentBackgroundImage photo={photo} />
+                </div>
+              )
+            })
+          : null}
       </div>
     )
   }
 }
 
-export default Background
-
-const DefaultBackgroundImage = () => {
-  const imagePath =
-    'https://farm2.staticflickr.com/1957/44769600924_35db82d4c4.jpg'
-  return (
-    <div
-      style={{
-        display: 'block',
-        width: '100%',
-        height: '100vh',
-        background: `url(${imagePath}) no-repeat center center / cover`
-      }}
-    />
-  )
-}
-
 const CurrentBackgroundImage = props => {
-  const imagePath = props.photo.url_l
-  if (!imagePath) {
-    return null
+  let imagePath = ''
+  if (props.photo.url_l) {
+    imagePath = props.photo.url_l
+  } else {
+    const photo = props.photo
+    imagePath = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${
+      photo.id
+    }_${photo.secret}.jpg`
   }
   return (
     <div
@@ -92,3 +78,5 @@ const CurrentBackgroundImage = props => {
     />
   )
 }
+
+export default Background

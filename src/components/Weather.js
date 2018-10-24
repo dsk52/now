@@ -31,7 +31,7 @@ class Weather extends React.Component {
 
     this.fetchId = setInterval(() => {
       this.fetchData()
-    }, 30000)
+    }, 1800000) // 30m
   }
 
   componentWillUnmount() {
