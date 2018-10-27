@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import QiitaClient from '../clients/QiitaClient'
-import DateUtility from '../utility/DateUtility'
 
 const QiitaPost = props => {
   const post = props.post
