@@ -28,7 +28,7 @@ class Drawer extends React.Component {
         >
           <span className="text">&lt;</span>
         </Handle>
-        <DrawerContent>aaa</DrawerContent>
+        <DrawerContent>{this.props.children}</DrawerContent>
       </DrawerBackground>
     )
   }

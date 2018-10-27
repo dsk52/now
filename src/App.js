@@ -5,6 +5,7 @@ import Weather from './components/Weather'
 import Watch from './components/Watch'
 import Background from './components/Background'
 import Drawer from './components/Drawer'
+import Qiita from './components/Qiita'
 
 class App extends Component {
   render() {
@@ -18,7 +19,9 @@ class App extends Component {
           <div className="background">
             <Background />
           </div>
-          <Drawer>aaa</Drawer>
+          <Drawer>
+            <Qiita />
+          </Drawer>
         </NowWrapper>
       </div>
     )
