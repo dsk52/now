@@ -27,7 +27,7 @@ class Qiita extends React.Component {
     }
   }
 
-  componentDidMount() {
+  fetchData() {
     const params = {
       page: 1,
       per_page: 6

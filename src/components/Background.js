@@ -15,18 +15,6 @@ class Background extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchPhoto()
-
-    this.fetchId = setInterval(() => {
-      this.fetchPhoto()
-    }, 1800000) // 30m
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.fetchId)
-  }
-
   fetchPhoto() {
     const params = {
       api_key: API_KEY,

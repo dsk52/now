@@ -8,19 +8,39 @@ import Drawer from './components/Drawer'
 import Qiita from './components/Qiita'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.refs.weather.fetchData()
+    this.refs.background.fetchPhoto()
+    this.refs.qiita.fetchData()
+
+    this.fetchId = setInterval(() => {
+      this.refs.weather.fetchData()
+      this.refs.background.fetchPhoto()
+      this.refs.qiita.fetchData()
+    }, 1800000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.fetchId)
+  }
+
   render() {
     return (
       <div className="App">
         <NowWrapper>
           <div className="content">
             <Watch />
-            <Weather />
+            <Weather ref="weather" />
           </div>
           <div className="background">
-            <Background />
+            <Background ref="background" />
           </div>
           <Drawer>
-            <Qiita />
+            <Qiita ref="qiita" />
           </Drawer>
         </NowWrapper>
       </div>

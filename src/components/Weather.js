@@ -26,18 +26,6 @@ class Weather extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchData()
-
-    this.fetchId = setInterval(() => {
-      this.fetchData()
-    }, 1800000) // 30m
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.fetchId)
-  }
-
   fetchData() {
     const params = {
       q: 'Osaka-shi,JP',
