@@ -1,6 +1,6 @@
 class ErrorService {
   static handler(event) {
-    console.warn(event);
+    console.warn(event)
   }
 }
 

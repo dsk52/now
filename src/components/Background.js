@@ -15,24 +15,12 @@ class Background extends React.Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchPhoto()
-
-    this.fetchId = setInterval(() => {
-      this.fetchPhoto()
-    }, 1800000) // 30m
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.fetchId)
-  }
-
-  fetchPhoto() {
+  fetchPhoto(text = 'sunny') {
     const params = {
       api_key: API_KEY,
       format: 'json',
       nojsoncallback: 1,
-      text: 'sunny',
+      text: text,
       extras: 'url_l, owner_name',
       method: 'flickr.photos.search',
       per_page: 1
