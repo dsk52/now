@@ -8,24 +8,24 @@ import Drawer from './components/Drawer'
 import Qiita from './components/Qiita'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
-    this.refs.weather.fetchData()
-    this.refs.background.fetchPhoto()
+    this.updateWeather()
     this.refs.qiita.fetchData()
 
     this.fetchId = setInterval(() => {
-      this.refs.weather.fetchData()
-      this.refs.background.fetchPhoto()
+      this.updateWeather()
       this.refs.qiita.fetchData()
     }, 1800000)
   }
 
   componentWillUnmount() {
     clearInterval(this.fetchId)
+  }
+
+  async updateWeather() {
+    this.refs.weather.fetchData(() => {
+      this.refs.background.fetchPhoto(this.refs.weather.getWeather())
+    })
   }
 
   render() {

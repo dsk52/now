@@ -26,13 +26,17 @@ class Weather extends React.Component {
     }
   }
 
-  fetchData() {
+  fetchData(after) {
     const params = {
       q: 'Osaka-shi,JP',
       units: 'metric',
       APPID: API_KEY
     }
-    WeatherClient.get(this, params)
+    WeatherClient.get(this, params, after)
+  }
+
+  getWeather() {
+    return this.state.weather.weather.main
   }
 
   render() {
