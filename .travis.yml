@@ -11,15 +11,13 @@ script:
   - echo "========== Build Start =========="
   - yarn run build
 
-after_success:
-  - firebase deploy
-
 branches:
   only:
     - master
 
 cache: yarn
 
+before_deploy: "echo 'ready?'"
 deploy:
   provider: firebase
   token:
