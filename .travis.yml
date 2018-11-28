@@ -1,0 +1,27 @@
+language: node_js
+
+node_js:
+  - "8.11.1"
+
+install:
+  - npm install -g firebase-tools
+
+script:
+  - echo "========== Build =========="
+  - yarn run build
+
+after_success:
+  - firebase deploy
+
+branches:
+  only:
+    - master
+
+cache: yarn
+
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
+  project: $FIREBASE_PROJECT
+  message: "Deploy!!"
