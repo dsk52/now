@@ -5,13 +5,11 @@ node_js:
 
 install:
   - npm install -g firebase-tools
+  - yarn install
 
 script:
-  - echo "========== Build =========="
+  - echo "========== Build Start =========="
   - yarn run build
-
-after_success:
-  - firebase deploy
 
 branches:
   only:
@@ -19,6 +17,7 @@ branches:
 
 cache: yarn
 
+before_deploy: "echo 'ready?'"
 deploy:
   provider: firebase
   token:
