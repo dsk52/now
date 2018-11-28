@@ -5,9 +5,10 @@ node_js:
 
 install:
   - npm install -g firebase-tools
+  - yarn install
 
 script:
-  - echo "========== Build =========="
+  - echo "========== Build Start =========="
   - yarn run build
 
 after_success:
