@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "nowapp-511c8"
+    "default": $FIREBASE_PROJECT
   }
 }
