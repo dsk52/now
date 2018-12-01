@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { DateTimeUtility } from '../utility/DateTimeUtility'
+
 class Watch extends React.Component {
   constructor(props) {
     super(props)
@@ -25,35 +27,15 @@ class Watch extends React.Component {
   }
 
   today() {
-    const today = new Date()
-    const year = today.getFullYear()
-    const month = today.getMonth() + 1
-    const day = ('0' + today.getDate()).slice(-2)
-    const week = today.getDay()
-
-    const dayOfTheWeeks = [
-      'Sun.',
-      'Mon.',
-      'Tue.',
-      'Wed.',
-      'Thu.',
-      'Fri.',
-      'Sat.'
-    ]
-
     this.setState({
-      today: `${year}.${month}.${day}`,
-      dayOfTheWeek: `${dayOfTheWeeks[week]}`
+      today: DateTimeUtility.todayDate(),
+      dayOfTheWeek: DateTimeUtility.dayOfTheWeek()
     })
   }
 
   time() {
-    const day = new Date()
-    const hour = day.getHours()
-    const minute = ('0' + day.getMinutes()).slice(-2)
-
     this.setState({
-      time: `${hour}:${minute}`
+      time: DateTimeUtility.time()
     })
   }
 
