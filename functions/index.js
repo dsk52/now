@@ -2,8 +2,6 @@ const functions = require('firebase-functions')
 
 const FlickerClient = require('./clients/FlickerClients')
 const HttpHandler = require('./clients/HttpHandler')
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
 
 exports.helloWorld = functions.https.onRequest((request, response) => {
   response.json({
@@ -17,13 +15,11 @@ exports.flicker = functions.https.onRequest((request, response) => {
   }
 
   const res = FlickerClient.get(request.query.text)
-  console.log(res)
+  console.log('res', res)
 
-  // if (res is 'success') {
-  return response.json({
-    message: 'flicker'
-  })
-  // } else {
-  //   // HttpHandler.500
-  // }
+  return response.json(res)
+
+  // return response.json({
+  //   message: 'flicker'
+  // })
 })
