@@ -2,7 +2,7 @@ import React from 'react'
 import FlickerClient from '../clients/FlickerClient'
 // import styled from 'styled-components'
 
-const API_KEY = process.env.REACT_APP_FLICKER_KEY
+// const API_KEY = process.env.REACT_APP_FLICKER_KEY
 
 class Background extends React.Component {
   constructor(props) {
@@ -17,13 +17,13 @@ class Background extends React.Component {
 
   fetchPhoto(text = 'sunny') {
     const params = {
-      api_key: API_KEY,
-      format: 'json',
-      nojsoncallback: 1,
-      text: text,
-      extras: 'url_l, owner_name',
-      method: 'flickr.photos.search',
-      per_page: 1
+      // api_key: API_KEY,
+      // format: 'json',
+      // nojsoncallback: 1,
+      text: text
+      // extras: 'url_l, owner_name',
+      // method: 'flickr.photos.search',
+      // per_page: 1
     }
     FlickerClient.get(this, params)
   }

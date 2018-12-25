@@ -1,10 +1,12 @@
 import Server from '../service/Server'
 import ErrorService from '../service/ErrorService'
 
+import { config } from '../config'
+
 class FlickerClient {
   static get(component, params) {
     new Server().get(
-      'https://api.flickr.com/services/rest',
+      `${config.FUNCTION_URL}/flicker`,
       params,
       response => {
         if (response.data.photos.photo.length) {
