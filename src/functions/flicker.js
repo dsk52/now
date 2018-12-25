@@ -6,11 +6,11 @@ exports.handler = async (event, context, callback) => {
     return ResponseHandler.BadRequest(callback)
   }
 
-  FlickerClient.get(event.queryStringParameters.text)
+  return FlickerClient.get(event.queryStringParameters.text)
     .then(response => {
-      ResponseHandler.success(callback, response.data)
+      return ResponseHandler.success(callback, response.data)
     })
     .catch(error => {
-      ResponseHandler.error(callback, error)
+      return ResponseHandler.error(callback, error)
     })
 }
