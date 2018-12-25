@@ -1,12 +1,12 @@
-const FlickerClient = require('./clients/FlickerClients')
-const ResponseHandler = require('./clients/ResponseHandler')
+const FlickerProvider = require('./provider/FlickerProvider')
+const ResponseHandler = require('./provider/ResponseHandler')
 
 exports.handler = async (event, context, callback) => {
   if (!event.queryStringParameters.text) {
     return ResponseHandler.BadRequest(callback)
   }
 
-  return FlickerClient.get(event.queryStringParameters.text)
+  return FlickerProvider.get(event.queryStringParameters.text)
     .then(response => {
       return ResponseHandler.success(callback, response.data)
     })
