@@ -17,10 +17,10 @@ class Background extends React.Component {
 
   fetchPhoto(text = 'sunny') {
     const params = {
+      text: text
       // api_key: API_KEY,
       // format: 'json',
       // nojsoncallback: 1,
-      text: text
       // extras: 'url_l, owner_name',
       // method: 'flickr.photos.search',
       // per_page: 1
