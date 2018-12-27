@@ -4,7 +4,7 @@ require('dotenv').config()
 const END_POINT = 'https://api.flickr.com/services/rest'
 const { FLICKER_KEY } = process.env
 
-module.exports = class FlickerClient {
+module.exports = class FlickerProvider {
   static get(searchText) {
     const params = {
       api_key: FLICKER_KEY,

@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import WeatherClient from '../clients/WeatherClient'
 
-const API_KEY = process.env.REACT_APP_OPEN_WEATHER_MAP_KEY
-
 class Weather extends React.Component {
   constructor(props) {
     super(props)
@@ -28,9 +26,7 @@ class Weather extends React.Component {
 
   fetchData(after) {
     const params = {
-      q: 'Osaka-shi,JP',
-      units: 'metric',
-      APPID: API_KEY
+      q: 'Osaka-shi,JP'
     }
     WeatherClient.get(this, params, after)
   }

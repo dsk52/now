@@ -1,12 +1,12 @@
-const FlickerProvider = require('./provider/FlickerProvider')
+const WeatherProvider = require('./provider/WeatherProvider')
 const ResponseHandler = require('./provider/ResponseHandler')
 
 exports.handler = async (event, context, callback) => {
-  if (!event.queryStringParameters.text) {
+  if (!event.queryStringParameters.q) {
     return ResponseHandler.BadRequest(callback)
   }
 
-  return FlickerProvider.get(event.queryStringParameters.text)
+  return WeatherProvider.get(event.queryStringParameters.q)
     .then(response => {
       return ResponseHandler.success(callback, response.data)
     })
