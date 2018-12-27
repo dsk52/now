@@ -1,10 +1,12 @@
 import Server from '../service/Server'
 import ErrorService from '../service/ErrorService'
 
+import { config } from '../config'
+
 class WeatherClient {
   static get(component, params, after) {
     new Server().get(
-      'https://api.openweathermap.org/data/2.5/weather',
+      `${config.FUNCTION_URL}/weather`,
       params,
       response => {
         component.setState(
